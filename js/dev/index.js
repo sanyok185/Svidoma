@@ -5751,6 +5751,7 @@ function preloader() {
     const preloaderTemplate = `
 			<div class="fls-preloader">
 				<div class="fls-preloader__body">
+					<div class="fls-preloader__counter">0%</div>
 					<div class="fls-preloader__logo"><picture><img alt="Logo"  src="./assets/img/logo.webp" ></picture></div>
 					
 				</div>

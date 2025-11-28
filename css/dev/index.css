@@ -1587,12 +1587,15 @@ textarea.input {
 
 /* Блок з лічильником */
 .fls-preloader__counter {
-  font-size: 10rem;
+  position: fixed;
+  bottom: 1.5625rem;
+  right: 1.625rem;
+  font-size: 2.5rem;
 }
 
 /* Прогресбар */
 .fls-preloader__logo {
-  width: 25vw;
+  width: 22vw;
 }
 .fls-preloader__logo img {
   width: 100%;
