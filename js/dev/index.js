@@ -1,4 +1,4 @@
-import { g as getHash, d as dataMediaQueries, s as slideDown, a as setHash, b as slideUp, c as slideToggle, e as bodyLock, f as bodyUnlock, h as bodyLockStatus, i as bodyLockToggle, j as gotoBlock } from "./common.min.js";
+import { g as getHash, d as dataMediaQueries, s as slideDown, a as setHash, b as slideUp, c as slideToggle, e as bodyLock, f as bodyUnlock, h as bodyLockStatus, i as bodyLockToggle, j as getDigFormat, k as gotoBlock, u as uniqArray } from "./common.min.js";
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) return;
@@ -5420,6 +5420,48 @@ class DynamicAdapt {
 if (document.querySelector("[data-fls-dynamic]")) {
   window.addEventListener("load", () => window.flsDynamic = new DynamicAdapt());
 }
+function digitsCounter() {
+  function digitsCountersInit(digitsCountersItems) {
+    let digitsCounters = digitsCountersItems ? digitsCountersItems : document.querySelectorAll("[data-fls-digcounter]");
+    if (digitsCounters.length) {
+      digitsCounters.forEach((digitsCounter2) => {
+        if (digitsCounter2.hasAttribute("data-fls-digcounter-go")) return;
+        digitsCounter2.setAttribute("data-fls-digcounter-go", "");
+        digitsCounter2.dataset.flsDigcounter = digitsCounter2.innerHTML;
+        digitsCounter2.innerHTML = `0`;
+        digitsCountersAnimate(digitsCounter2);
+      });
+    }
+  }
+  function digitsCountersAnimate(digitsCounter2) {
+    let startTimestamp = null;
+    const duration = parseFloat(digitsCounter2.dataset.flsDigcounterSpeed) ? parseFloat(digitsCounter2.dataset.flsDigcounterSpeed) : 1e3;
+    const startValue = parseFloat(digitsCounter2.dataset.flsDigcounter);
+    const format = digitsCounter2.dataset.flsDigcounterFormat ? digitsCounter2.dataset.flsDigcounterFormat : " ";
+    const startPosition = 0;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const value = Math.floor(progress * (startPosition + startValue));
+      digitsCounter2.innerHTML = typeof digitsCounter2.dataset.flsDigcounterFormat !== "undefined" ? getDigFormat(value, format) : value;
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        digitsCounter2.removeAttribute("data-fls-digcounter-go");
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+  function digitsCounterAction(e) {
+    const entry = e.detail.entry;
+    const targetElement = entry.target;
+    if (targetElement.querySelectorAll("[data-fls-digcounter]").length && !targetElement.querySelectorAll("[data-fls-watcher]").length && entry.isIntersecting) {
+      digitsCountersInit(targetElement.querySelectorAll("[data-fls-digcounter]"));
+    }
+  }
+  document.addEventListener("watcherCallback", digitsCounterAction);
+}
+document.querySelector("[data-fls-digcounter]") ? window.addEventListener("load", digitsCounter) : null;
 function formInit() {
   function formSubmit() {
     const forms = document.forms;
@@ -5509,3 +5551,242 @@ function formInit() {
   formFieldsInit();
 }
 document.querySelector("[data-fls-form]") ? window.addEventListener("load", formInit) : null;
+class ScrollWatcher {
+  constructor(props) {
+    let defaultConfig = {
+      logging: true
+    };
+    this.config = Object.assign(defaultConfig, props);
+    this.observer;
+    !document.documentElement.hasAttribute("data-fls-watch") ? this.scrollWatcherRun() : null;
+  }
+  // Оновлюємо конструктор
+  scrollWatcherUpdate() {
+    this.scrollWatcherRun();
+  }
+  // Запускаємо конструктор
+  scrollWatcherRun() {
+    document.documentElement.setAttribute("data-fls-watch", "");
+    this.scrollWatcherConstructor(document.querySelectorAll("[data-fls-watcher]"));
+  }
+  // Конструктор спостерігачів
+  scrollWatcherConstructor(items) {
+    if (items.length) {
+      let uniqParams = uniqArray(Array.from(items).map(function(item) {
+        if (item.dataset.flsWatcher === "navigator" && !item.dataset.flsWatcherThreshold) {
+          let valueOfThreshold;
+          if (item.clientHeight > 2) {
+            valueOfThreshold = window.innerHeight / 2 / (item.clientHeight - 1);
+            if (valueOfThreshold > 1) {
+              valueOfThreshold = 1;
+            }
+          } else {
+            valueOfThreshold = 1;
+          }
+          item.setAttribute(
+            "data-fls-watcher-threshold",
+            valueOfThreshold.toFixed(2)
+          );
+        }
+        return `${item.dataset.flsWatcherRoot ? item.dataset.flsWatcherRoot : null}|${item.dataset.flsWatcherMargin ? item.dataset.flsWatcherMargin : "0px"}|${item.dataset.flsWatcherThreshold ? item.dataset.flsWatcherThreshold : 0}`;
+      }));
+      uniqParams.forEach((uniqParam) => {
+        let uniqParamArray = uniqParam.split("|");
+        let paramsWatch = {
+          root: uniqParamArray[0],
+          margin: uniqParamArray[1],
+          threshold: uniqParamArray[2]
+        };
+        let groupItems = Array.from(items).filter(function(item) {
+          let watchRoot = item.dataset.flsWatcherRoot ? item.dataset.flsWatcherRoot : null;
+          let watchMargin = item.dataset.flsWatcherMargin ? item.dataset.flsWatcherMargin : "0px";
+          let watchThreshold = item.dataset.flsWatcherThreshold ? item.dataset.flsWatcherThreshold : 0;
+          if (String(watchRoot) === paramsWatch.root && String(watchMargin) === paramsWatch.margin && String(watchThreshold) === paramsWatch.threshold) {
+            return item;
+          }
+        });
+        let configWatcher = this.getScrollWatcherConfig(paramsWatch);
+        this.scrollWatcherInit(groupItems, configWatcher);
+      });
+    }
+  }
+  // Функція створення налаштувань
+  getScrollWatcherConfig(paramsWatch) {
+    let configWatcher = {};
+    if (document.querySelector(paramsWatch.root)) {
+      configWatcher.root = document.querySelector(paramsWatch.root);
+    } else if (paramsWatch.root !== "null") ;
+    configWatcher.rootMargin = paramsWatch.margin;
+    if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) {
+      return;
+    }
+    if (paramsWatch.threshold === "prx") {
+      paramsWatch.threshold = [];
+      for (let i = 0; i <= 1; i += 5e-3) {
+        paramsWatch.threshold.push(i);
+      }
+    } else {
+      paramsWatch.threshold = paramsWatch.threshold.split(",");
+    }
+    configWatcher.threshold = paramsWatch.threshold;
+    return configWatcher;
+  }
+  // Функція створення нового спостерігача зі своїми налаштуваннями
+  scrollWatcherCreate(configWatcher) {
+    this.observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        this.scrollWatcherCallback(entry, observer);
+      });
+    }, configWatcher);
+  }
+  // Функція ініціалізації спостерігача зі своїми налаштуваннями
+  scrollWatcherInit(items, configWatcher) {
+    this.scrollWatcherCreate(configWatcher);
+    items.forEach((item) => this.observer.observe(item));
+  }
+  // Функція обробки базових дій точок спрацьовування
+  scrollWatcherIntersecting(entry, targetElement) {
+    if (entry.isIntersecting) {
+      !targetElement.classList.contains("--watcher-view") ? targetElement.classList.add("--watcher-view") : null;
+    } else {
+      targetElement.classList.contains("--watcher-view") ? targetElement.classList.remove("--watcher-view") : null;
+    }
+  }
+  // Функція відключення стеження за об'єктом
+  scrollWatcherOff(targetElement, observer) {
+    observer.unobserve(targetElement);
+  }
+  // Функція обробки спостереження
+  scrollWatcherCallback(entry, observer) {
+    const targetElement = entry.target;
+    this.scrollWatcherIntersecting(entry, targetElement);
+    targetElement.hasAttribute("data-fls-watcher-once") && entry.isIntersecting ? this.scrollWatcherOff(targetElement, observer) : null;
+    document.dispatchEvent(new CustomEvent("watcherCallback", {
+      detail: {
+        entry
+      }
+    }));
+  }
+}
+document.querySelector("[data-fls-watcher]") ? window.addEventListener("load", () => new ScrollWatcher({})) : null;
+function pageNavigation() {
+  document.addEventListener("click", pageNavigationAction);
+  document.addEventListener("watcherCallback", pageNavigationAction);
+  function pageNavigationAction(e) {
+    if (e.type === "click") {
+      const targetElement = e.target;
+      if (targetElement.closest("[data-fls-scrollto]")) {
+        const gotoLink = targetElement.closest("[data-fls-scrollto]");
+        const gotoLinkSelector = gotoLink.dataset.flsScrollto ? gotoLink.dataset.flsScrollto : "";
+        const noHeader = gotoLink.hasAttribute("data-fls-scrollto-header") ? true : false;
+        const gotoSpeed = gotoLink.dataset.flsScrolltoSpeed ? gotoLink.dataset.flsScrolltoSpeed : 500;
+        const offsetTop = gotoLink.dataset.flsScrolltoTop ? parseInt(gotoLink.dataset.flsScrolltoTop) : 0;
+        if (window.fullpage) {
+          const fullpageSection = document.querySelector(`${gotoLinkSelector}`).closest("[data-fls-fullpage-section]");
+          const fullpageSectionId = fullpageSection ? +fullpageSection.dataset.flsFullpageId : null;
+          if (fullpageSectionId !== null) {
+            window.fullpage.switchingSection(fullpageSectionId);
+            if (document.documentElement.hasAttribute("data-fls-menu-open")) {
+              bodyUnlock();
+              document.documentElement.removeAttribute("data-fls-menu-open");
+            }
+          }
+        } else {
+          gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+        }
+        e.preventDefault();
+      }
+    } else if (e.type === "watcherCallback" && e.detail) {
+      const entry = e.detail.entry;
+      const targetElement = entry.target;
+      if (targetElement.dataset.flsWatcher === "navigator") {
+        document.querySelector(`[data-fls-scrollto].--navigator-active`);
+        let navigatorCurrentItem;
+        if (targetElement.id && document.querySelector(`[data-fls-scrollto="#${targetElement.id}"]`)) {
+          navigatorCurrentItem = document.querySelector(`[data-fls-scrollto="#${targetElement.id}"]`);
+        } else if (targetElement.classList.length) {
+          for (let index = 0; index < targetElement.classList.length; index++) {
+            const element = targetElement.classList[index];
+            if (document.querySelector(`[data-fls-scrollto=".${element}"]`)) {
+              navigatorCurrentItem = document.querySelector(`[data-fls-scrollto=".${element}"]`);
+              break;
+            }
+          }
+        }
+        if (entry.isIntersecting) {
+          navigatorCurrentItem ? navigatorCurrentItem.classList.add("--navigator-active") : null;
+        } else {
+          navigatorCurrentItem ? navigatorCurrentItem.classList.remove("--navigator-active") : null;
+        }
+      }
+    }
+  }
+  if (getHash()) {
+    let goToHash;
+    if (document.querySelector(`#${getHash()}`)) {
+      goToHash = `#${getHash()}`;
+    } else if (document.querySelector(`.${getHash()}`)) {
+      goToHash = `.${getHash()}`;
+    }
+    goToHash ? gotoBlock(goToHash) : null;
+  }
+}
+document.querySelector("[data-fls-scrollto]") ? window.addEventListener("load", pageNavigation) : null;
+function preloader() {
+  const preloaderImages = document.querySelectorAll("img");
+  const htmlDocument = document.documentElement;
+  const isPreloaded = localStorage.getItem(location.href) && document.querySelector('[data-fls-preloader="true"]');
+  if (preloaderImages.length && !isPreloaded) {
+    let setValueProgress = function(progress2) {
+      showPecentLoad ? showPecentLoad.innerText = `${progress2}%` : null;
+      showLineLoad ? showLineLoad.style.width = `${progress2}%` : null;
+    }, imageLoaded = function() {
+      imagesLoadedCount++;
+      progress = Math.round(100 / preloaderImages.length * imagesLoadedCount);
+      const intervalId = setInterval(() => {
+        counter >= progress ? clearInterval(intervalId) : setValueProgress(++counter);
+        counter >= 100 ? addLoadedClass() : null;
+      }, 10);
+    };
+    const preloaderTemplate = `
+			<div class="fls-preloader">
+				<div class="fls-preloader__body">
+					<div class="fls-preloader__counter">0%</div>
+				</div>
+			</div>`;
+    document.body.insertAdjacentHTML("beforeend", preloaderTemplate);
+    document.querySelector(".fls-preloader");
+    const showPecentLoad = document.querySelector(".fls-preloader__counter"), showLineLoad = document.querySelector(".fls-preloader__line span");
+    let imagesLoadedCount = 0;
+    let counter = 0;
+    let progress = 0;
+    htmlDocument.setAttribute("data-fls-preloader-loading", "");
+    htmlDocument.setAttribute("data-fls-scrolllock", "");
+    preloaderImages.forEach((preloaderImage) => {
+      const imgClone = document.createElement("img");
+      if (imgClone) {
+        imgClone.onload = imageLoaded;
+        imgClone.onerror = imageLoaded;
+        preloaderImage.dataset.src ? imgClone.src = preloaderImage.dataset.src : imgClone.src = preloaderImage.src;
+      }
+    });
+    setValueProgress(progress);
+    const preloaderOnce = () => localStorage.setItem(location.href, "preloaded");
+    document.querySelector('[data-fls-preloader="true"]') ? preloaderOnce() : null;
+  } else {
+    addLoadedClass();
+  }
+  function addLoadedClass() {
+    htmlDocument.setAttribute("data-fls-preloader-loaded", "");
+    htmlDocument.removeAttribute("data-fls-preloader-loading");
+    htmlDocument.removeAttribute("data-fls-scrolllock");
+  }
+}
+document.addEventListener("DOMContentLoaded", preloader);
+if (!document.documentElement.hasAttribute("data-fls-preloader-loading")) {
+  window.addEventListener("load", function() {
+    setTimeout(function() {
+      document.documentElement.setAttribute("data-fls-loaded", "");
+    }, 0);
+  });
+}

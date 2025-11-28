@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="uk">
 	<head>
+		<style data-fls-preloader="false" rel="preload">
+			body > *:not(.fls-preloader) {opacity: 0;visibility: hidden;}[data-fls-preloader-loaded] body > *:not(.fls-preloader) {transition: opacity 0.5s ease 0s;opacity: 1;visibility: visible;}
+		</style>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>SVIDOMA</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1764228980450"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1764228980450">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1764228980450">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1764314432933"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1764314432933">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1764314432933">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -22,25 +25,25 @@
 						<nav class="menu__body">
 							<ul class="menu__list">
 								<li class="menu__item">
-									<a href="#" class="menu__link">
+									<a href="#" class="menu__link" data-fls-scrollto=".services" data-fls-scrollto-header="">
 										<span class="menu__text">Послуги</span>
 										<span class="menu__text menu__text--hidden">Послуги</span>
 									</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">
+									<a href="#" class="menu__link" data-fls-scrollto=".algorithm" data-fls-scrollto-header="">
 										<span class="menu__text">Як працюємо</span>
 										<span class="menu__text menu__text--hidden">Як працюємо</span>
 									</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">
+									<a href="#" class="menu__link" data-fls-scrollto=".reviews" data-fls-scrollto-header="">
 										<span class="menu__text">Відгуки</span>
 										<span class="menu__text menu__text--hidden">Відгуки</span>
 									</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">
+									<a href="#" class="menu__link" data-fls-scrollto=".about-us" data-fls-scrollto-header="">
 										<span class="menu__text">Про нас</span>
 										<span class="menu__text menu__text--hidden">Про нас</span>
 									</a>
@@ -48,38 +51,40 @@
 							</ul>
 							<ul class="menu__list menu__list--mobile">
 								<li class="menu__item">
-									<a href="#" class="menu__link">Головна</a>
+									<a href="/" class="menu__link">Головна</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Про нас</a>
+									<a href="#" class="menu__link" data-fls-scrollto=".about-us" data-fls-scrollto-header="">Про нас</a>
 								</li>
-								<li class="menu__item">
+								<li class="menu__item" data-fls-scrollto=".services" data-fls-scrollto-header="">
 									<a href="#" class="menu__link">Послуги</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Відгуки</a>
+									<a href="#" class="menu__link" data-fls-scrollto=".reviews" data-fls-scrollto-header="">Відгуки</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Чому нас обирають</a>
+									<a href="#" class="menu__link" data-fls-scrollto=".benefits" data-fls-scrollto-header="">Чому нас обирають</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Як працюємо</a>
+									<a href="#" class="menu__link" data-fls-scrollto=".algorithm" data-fls-scrollto-header="">Як працюємо</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">переваги</a>
+									<a href="#" class="menu__link" data-fls-scrollto=".advantages" data-fls-scrollto-header="">переваги</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">цінності</a>
+									<a href="#" class="menu__link" data-fls-scrollto=".values">цінності</a>
 								</li>
 							</ul>
 						</nav>
 					</div>
-					<div class="header__logo">
+					<a href="." class="header__logo">
 						<picture>
 							<img alt="Logo" src="./assets/img/logo.webp">
 						</picture>
-					</div>
-					<button data-fls-button="" class="header__button button button--header" data-fls-dynamic=".menu__body, 767.98">Отримати консультацію</button>
+					</a>
+					<button data-fls-button="" class="header__button button button--header" data-fls-dynamic=".menu__body, 767.98" data-fls-popup-link="popup-form">
+						<span>Отримати консультацію</span>
+					</button>
 				</div>
 			</header>
 			<main class="page">
@@ -106,7 +111,7 @@
 					</div>
 					<div class="hero__container">
 						<div class="hero__content">
-							<h1 class="hero__title">
+							<h1 class="hero__title" data-fls-watcher="">
 								<i>Адвокатське бюро</i>
 								Іванів-Магльованої «СВІДОМА» — це команда, яка обирає прозорість,
 					відповідальність та професійність у кожному рішенні.
@@ -118,20 +123,22 @@
 						занурюємося в деталі, оцінюємо ризики, пропонуємо найкращі
 						рішення s супроводжуємо вас на кожному етапі.
 								</div>
-								<button data-fls-button="" class="hero__button button button--hero" data-fls-popup-link="popup-form">Отримати консультацію</button>
+								<button data-fls-button="" class="hero__button button button--hero" data-fls-popup-link="popup-form">
+									<span>Отримати консультацію</span>
+								</button>
 							</div>
 						</div>
 					</div>
 				</section>
 				<section class="about-us">
 					<div class="about-us__container">
-						<h2 class="about-us__title title">
+						<h2 class="about-us__title title" data-fls-watcher="">
 							<span>( Про нас мовою цифр )</span>
 						</h2>
-						<div class="about-us__items">
-							<div class="about-us__item item-about">
+						<div class="about-us__items" data-fls-watcher="">
+							<div class="about-us__item item-about" data-fls-watcher="">
 								<div class="item-about__number">
-									<span>6</span>
+									<span data-fls-digcounter="">6</span>
 									+ років
 								</div>
 								<div class="item-about__text">
@@ -140,16 +147,16 @@
 									практики
 								</div>
 							</div>
-							<div class="about-us__item item-about">
+							<div class="about-us__item item-about" data-fls-watcher="">
 								<div class="item-about__number">
-									<span>200</span>
+									<span data-fls-digcounter="">200</span>
 									+
 								</div>
 								<div class="item-about__text">виготовлених та погоджених договорів для клієнтів</div>
 							</div>
-							<div class="about-us__item item-about">
+							<div class="about-us__item item-about" data-fls-watcher="">
 								<div class="item-about__number">
-									<span>5</span>
+									<span data-fls-digcounter="">5</span>
 									+ млн
 								</div>
 								<div class="item-about__text">
@@ -157,7 +164,7 @@
 						рішень контролюючих органів
 								</div>
 							</div>
-							<div class="about-us__item item-about">
+							<div class="about-us__item item-about" data-fls-watcher="">
 								<div class="item-about__number">24/7</div>
 								<div class="item-about__text">готовність реагувати на критичні ситуації</div>
 							</div>
@@ -167,12 +174,12 @@
 				<section class="services">
 					<div class="services__container">
 						<div class="services__body">
-							<h2 class="services__title title">
+							<h2 class="services__title title" data-fls-watcher="">
 								<span>( наші послуги )</span>
 							</h2>
 							<div data-fls-tabs="" class="tabs-services">
 								<div class="tabs-services__wrapper">
-									<div data-fls-tabs-titles="" class="tabs-services__navigation">
+									<div data-fls-tabs-titles="" class="tabs-services__navigation" data-fls-watcher="">
 										<button type="button" class="tabs-services__title --tab-active">
 											<span class="--icon-services_01">Для бізнесу</span>
 										</button>
@@ -193,7 +200,7 @@
 										</button>
 									</div>
 								</div>
-								<div data-fls-tabs-body="" class="tabs-services__content">
+								<div data-fls-tabs-body="" class="tabs-services__content" data-fls-watcher="">
 									<div class="tabs-services__body">
 										<ul>
 											<li>Cупровід реєстраційних дій</li>
@@ -276,17 +283,19 @@
 									</div>
 								</div>
 							</div>
-							<button data-fls-button="" class="services__button button">Отримати консультацію</button>
+							<button data-fls-watcher="" data-fls-button="" class="services__button button" data-fls-popup-link="popup-form">
+								<span>Отримати консультацію</span>
+							</button>
 						</div>
 					</div>
 				</section>
 				<section class="algorithm">
 					<div class="algorithm__container">
-						<h2 class="algorithm__title title">
+						<h2 class="algorithm__title title" data-fls-watcher="">
 							<span>( Алгоритм співпраці )</span>
 						</h2>
-						<div class="algorithm__items">
-							<div class="algorithm__item item-algorithm">
+						<div class="algorithm__items" data-fls-watcher="">
+							<div class="algorithm__item item-algorithm" data-fls-watcher="">
 								<div class="item-algorithm__number">
 									<span class="filled"></span>
 									<div class="number">01</div>
@@ -298,7 +307,7 @@
 								<h4 class="item-algorithm__title">Звернення</h4>
 								<div class="item-algorithm__text">ви залишаєте заявку чи телефонуєте нам.</div>
 							</div>
-							<div class="algorithm__item item-algorithm">
+							<div class="algorithm__item item-algorithm" data-fls-watcher="">
 								<div class="item-algorithm__number">
 									<span class="filled"></span>
 									<span class="filled"></span>
@@ -310,13 +319,13 @@
 								<h4 class="item-algorithm__title">Консультація</h4>
 								<div class="item-algorithm__text">обговорюємо вашу ситуацію, визначаємо пріоритети.</div>
 							</div>
-							<div class="algorithm__item item-algorithm item-algorithm--image">
+							<div class="algorithm__item item-algorithm item-algorithm--image" data-fls-watcher="">
 								<picture>
 									<source media="(max-width: 600px)" srcset="./assets/img/alghorithm_01-600.webp" type="image/webp">
 									<img alt="Image" src="./assets/img/alghorithm_01.webp">
 								</picture>
 							</div>
-							<div class="algorithm__item item-algorithm">
+							<div class="algorithm__item item-algorithm" data-fls-watcher="">
 								<div class="item-algorithm__number">
 									<span class="filled"></span>
 									<span class="filled"></span>
@@ -328,13 +337,13 @@
 								<h4 class="item-algorithm__title">Стратегія</h4>
 								<div class="item-algorithm__text">розробляємо покроковий план захисту чи супроводу.</div>
 							</div>
-							<div class="algorithm__item item-algorithm item-algorithm--image">
+							<div class="algorithm__item item-algorithm item-algorithm--image" data-fls-watcher="">
 								<picture>
 									<source media="(max-width: 600px)" srcset="./assets/img/alghorithm_02-600.webp" type="image/webp">
 									<img alt="Image" src="./assets/img/alghorithm_02.webp">
 								</picture>
 							</div>
-							<div class="algorithm__item item-algorithm">
+							<div class="algorithm__item item-algorithm" data-fls-watcher="">
 								<div class="item-algorithm__number">
 									<span class="filled"></span>
 									<span class="filled"></span>
@@ -349,7 +358,7 @@
 						органи влади.
 								</div>
 							</div>
-							<div class="algorithm__item item-algorithm">
+							<div class="algorithm__item item-algorithm" data-fls-watcher="">
 								<div class="item-algorithm__number">
 									<span class="filled"></span>
 									<span class="filled"></span>
@@ -362,7 +371,7 @@
 								<div class="item-algorithm__text">ви отримуєте не лише вирішене питання, а й впевненість у
 						майбутньому.</div>
 							</div>
-							<div class="algorithm__item item-algorithm item-algorithm--request">
+							<div class="algorithm__item item-algorithm item-algorithm--request" data-fls-watcher="">
 								<div class="item-algorithm__number">
 									<span class="brown"></span>
 									<span class="brown"></span>
@@ -372,7 +381,9 @@
 								</div>
 								<h4 class="item-algorithm__title">Заявка</h4>
 								<div class="item-algorithm__text">Залиште заявку на консультацію або зв’яжіться з нами напряму.</div>
-								<button data-fls-button="" class="item-algorithm__button button">Отримати консультацію</button>
+								<button data-fls-button="" class="item-algorithm__button button" data-fls-popup-link="popup-form">
+									<span>Отримати консультацію</span>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -380,7 +391,7 @@
 				<section class="benefits">
 					<div class="benefits__container">
 						<div class="benefits__body">
-							<h2 class="benefits__title title">
+							<h2 class="benefits__title title" data-fls-watcher="">
 								<span>( Клієнти обирають нас, тому що ми )</span>
 							</h2>
 							<div class="benefits__items">
@@ -413,7 +424,7 @@
 				</section>
 				<section class="reviews">
 					<div class="reviews__container">
-						<h2 class="reviews__title title">
+						<h2 class="reviews__title title" data-fls-watcher="">
 							<span>( Відгуки )</span>
 						</h2>
 						<div class="reviews__body">
@@ -429,10 +440,11 @@
 										</div>
 										<p class="review__text">
 											Працюємо з Іриною вже понад два роки. Завжди чітко,
-							своєчасно та з реальним розумінням бізнес-процесів.Завдяки
-							її супроводу вдалося уникнути штрафів і спірних ситуацій із
-							контролюючими органами.Надійний партнер, який завжди тримає
-							руку на пульсі змін у законодавстві.
+								своєчасно та з реальним розумінням
+								бізнес-процесів.Завдяки її супроводу вдалося уникнути
+								штрафів і спірних ситуацій із контролюючими
+								органами.Надійний партнер, який завжди тримає руку на
+								пульсі змін у законодавстві.
 										</p>
 										<div class="review__name">Тетяна з компанії Chick-fil-A</div>
 										<div class="review__position">бізнес-клієнт</div>
@@ -446,10 +458,11 @@
 										</div>
 										<p class="review__text">
 											Працюємо з Іриною вже понад два роки. Завжди чітко,
-							своєчасно та з реальним розумінням бізнес-процесів.Завдяки
-							її супроводу вдалося уникнути штрафів і спірних ситуацій із
-							контролюючими органами.Надійний партнер, який завжди тримає
-							руку на пульсі змін у законодавстві.
+								своєчасно та з реальним розумінням
+								бізнес-процесів.Завдяки її супроводу вдалося уникнути
+								штрафів і спірних ситуацій із контролюючими
+								органами.Надійний партнер, який завжди тримає руку на
+								пульсі змін у законодавстві.
 										</p>
 										<div class="review__name">Юрій з компанії Chick-fil-A</div>
 										<div class="review__position">бізнес-клієнт</div>
@@ -463,10 +476,11 @@
 										</div>
 										<p class="review__text">
 											Працюємо з Іриною вже понад два роки. Завжди чітко,
-							своєчасно та з реальним розумінням бізнес-процесів.Завдяки
-							її супроводу вдалося уникнути штрафів і спірних ситуацій із
-							контролюючими органами.Надійний партнер, який завжди тримає
-							руку на пульсі змін у законодавстві.
+								своєчасно та з реальним розумінням
+								бізнес-процесів.Завдяки її супроводу вдалося уникнути
+								штрафів і спірних ситуацій із контролюючими
+								органами.Надійний партнер, який завжди тримає руку на
+								пульсі змін у законодавстві.
 										</p>
 										<div class="review__name">Наталя з компанії Chick-fil-A</div>
 										<div class="review__position">бізнес-клієнт</div>
@@ -480,10 +494,11 @@
 										</div>
 										<p class="review__text">
 											Працюємо з Іриною вже понад два роки. Завжди чітко,
-							своєчасно та з реальним розумінням бізнес-процесів.Завдяки
-							її супроводу вдалося уникнути штрафів і спірних ситуацій із
-							контролюючими органами.Надійний партнер, який завжди тримає
-							руку на пульсі змін у законодавстві.
+								своєчасно та з реальним розумінням
+								бізнес-процесів.Завдяки її супроводу вдалося уникнути
+								штрафів і спірних ситуацій із контролюючими
+								органами.Надійний партнер, який завжди тримає руку на
+								пульсі змін у законодавстві.
 										</p>
 										<div class="review__name">Cергій з компанії Chick-fil-A</div>
 										<div class="review__position">бізнес-клієнт</div>
@@ -497,10 +512,11 @@
 										</div>
 										<p class="review__text">
 											Працюємо з Іриною вже понад два роки. Завжди чітко,
-							своєчасно та з реальним розумінням бізнес-процесів.Завдяки
-							її супроводу вдалося уникнути штрафів і спірних ситуацій із
-							контролюючими органами.Надійний партнер, який завжди тримає
-							руку на пульсі змін у законодавстві.
+								своєчасно та з реальним розумінням
+								бізнес-процесів.Завдяки її супроводу вдалося уникнути
+								штрафів і спірних ситуацій із контролюючими
+								органами.Надійний партнер, який завжди тримає руку на
+								пульсі змін у законодавстві.
 										</p>
 										<div class="review__name">Тетяна з компанії Chick-fil-A</div>
 										<div class="review__position">бізнес-клієнт</div>
@@ -514,10 +530,11 @@
 										</div>
 										<p class="review__text">
 											Працюємо з Іриною вже понад два роки. Завжди чітко,
-							своєчасно та з реальним розумінням бізнес-процесів.Завдяки
-							її супроводу вдалося уникнути штрафів і спірних ситуацій із
-							контролюючими органами.Надійний партнер, який завжди тримає
-							руку на пульсі змін у законодавстві.
+								своєчасно та з реальним розумінням
+								бізнес-процесів.Завдяки її супроводу вдалося уникнути
+								штрафів і спірних ситуацій із контролюючими
+								органами.Надійний партнер, який завжди тримає руку на
+								пульсі змін у законодавстві.
 										</p>
 										<div class="review__name">Юрій з компанії Chick-fil-A</div>
 										<div class="review__position">бізнес-клієнт</div>
@@ -531,15 +548,15 @@
 				<section class="advantages">
 					<div class="advantages__container">
 						<div class="advantages__body">
-							<h2 class="advantages__title title">
+							<h2 class="advantages__title title" data-fls-watcher="">
 								<span>( Наші переваги )</span>
 							</h2>
 							<div class="advantages__items">
 								<div class="advantages__item advantage">
 									<img src="./assets/img/vector/advantage_01.svg" alt="Icon" class="advantage__icon">
 									<p class="advantage__text">
-										понад 5 років практики у сфері господарського, податкового та
-							митного права
+										понад 5 років практики у сфері господарського, податкового
+							та митного права
 									</p>
 								</div>
 								<div class="advantages__item advantage">
@@ -563,13 +580,16 @@
 									<p class="advantage__text">
 										супровід купівлі-продажу
 										<br>
-										нерухомості — від перевірки об’єкта до повного юридичного оформлення
+										нерухомості — від перевірки об’єкта до повного юридичного
+							оформлення
 									</p>
 								</div>
 								<div class="advantages__item advantage">
 									<img src="./assets/img/vector/advantage_05.svg" alt="Icon" class="advantage__icon">
 									<p class="advantage__text">
-										допомога в організації та розвитку будівельного бізнесу: від реєстрації компанії до супроводу договорів та інвестицій
+										допомога в організації та розвитку будівельного бізнесу:
+							від реєстрації компанії до супроводу договорів та
+							інвестицій
 									</p>
 								</div>
 							</div>
@@ -578,13 +598,13 @@
 				</section>
 				<section class="values">
 					<div class="values__container">
-						<h2 class="values__title title">
+						<h2 class="values__title title" data-fls-watcher="">
 							<span>( Наші цінності )</span>
 						</h2>
 						<div class="values__cards">
 							<div class="values__card card-values">
 								<div class="card-values__top">
-									<h3 class="card-values__title">Прозорість</h3>
+									<h3 class="card-values__title" data-fls-watcher="">Прозорість</h3>
 									<div class="card-values__number">
 										<span class="filled"></span>
 										<div class="number">01</div>
@@ -598,7 +618,7 @@
 							</div>
 							<div class="values__card card-values">
 								<div class="card-values__top">
-									<h3 class="card-values__title">Відповідальність</h3>
+									<h3 class="card-values__title" data-fls-watcher="">Відповідальність</h3>
 									<div class="card-values__number">
 										<span class="filled"></span>
 										<span class="filled"></span>
@@ -611,7 +631,7 @@
 							</div>
 							<div class="values__card card-values">
 								<div class="card-values__top">
-									<h3 class="card-values__title">Компетентність</h3>
+									<h3 class="card-values__title" data-fls-watcher="">Компетентність</h3>
 									<div class="card-values__number">
 										<span class="filled"></span>
 										<span class="filled"></span>
@@ -624,7 +644,7 @@
 							</div>
 							<div class="values__card card-values">
 								<div class="card-values__top">
-									<h3 class="card-values__title">Результативність</h3>
+									<h3 class="card-values__title" data-fls-watcher="">Результативність</h3>
 									<div class="card-values__number">
 										<span class="filled"></span>
 										<span class="filled"></span>
@@ -647,7 +667,7 @@
 							</picture>
 						</div>
 						<div class="contact__body">
-							<h2 class="contact__title">
+							<h2 class="contact__title" data-fls-watcher="">
 								<span>
 									Довірте нам своє
 									<i>питання</i>
@@ -667,11 +687,14 @@
 									<option value="3">Нерухомість</option>
 									<option value="4">Право інтелектуальної власності</option>
 									<option value="5">
-										Представництво в національних, третейских та арбітражних судах фізичних та юридичних осіб
+										Представництво в національних, третейских та арбітражних
+							судах фізичних та юридичних осіб
 									</option>
 								</select>
 								<textarea data-fls-input="" autocomplete="off" name="form[]" placeholder="Коментар" data-error="Помилка" class="contact__message input"></textarea>
-								<button type="submit" class="contact__button button">Надіслати заявку</button>
+								<button type="submit" class="contact__button button">
+									<span>Надіслати заявку</span>
+								</button>
 							</form>
 						</div>
 					</div>
@@ -709,25 +732,25 @@
 								<ul class="menu-footer__list">
 									<div class="menu-footer__column">
 										<li class="menu-footer__item">
-											<a href="#" class="menu-footer__link">
+											<a href="/" class="menu-footer__link">
 												<span class="menu-footer__text">Головна</span>
 												<span class="menu-footer__text menu-footer__text--hidden">Головна</span>
 											</a>
 										</li>
 										<li class="menu-footer__item">
-											<a href="#" class="menu-footer__link">
+											<a href="#" class="menu-footer__link" data-fls-scrollto=".about-us" data-fls-scrollto-header="">
 												<span class="menu-footer__text">Про нас</span>
 												<span class="menu-footer__text menu-footer__text--hidden">Про нас</span>
 											</a>
 										</li>
 										<li class="menu-footer__item">
-											<a href="#" class="menu-footer__link">
+											<a href="#" class="menu-footer__link" data-fls-scrollto=".services" data-fls-scrollto-header="">
 												<span class="menu-footer__text">Послуги</span>
 												<span class="menu-footer__text menu-footer__text--hidden">Послуги</span>
 											</a>
 										</li>
 										<li class="menu-footer__item">
-											<a href="#" class="menu-footer__link">
+											<a href="#" class="menu-footer__link" data-fls-scrollto=".reviews" data-fls-scrollto-header="">
 												<span class="menu-footer__text">Відгуки</span>
 												<span class="menu-footer__text menu-footer__text--hidden">Відгуки</span>
 											</a>
@@ -735,25 +758,25 @@
 									</div>
 									<div class="menu-footer__column">
 										<li class="menu-footer__item">
-											<a href="#" class="menu-footer__link">
+											<a href="#" class="menu-footer__link" data-fls-scrollto=".benefits" data-fls-scrollto-header="">
 												<span class="menu-footer__text">Чому нас обирають</span>
 												<span class="menu-footer__text menu-footer__text--hidden">Чому нас обирають</span>
 											</a>
 										</li>
 										<li class="menu-footer__item">
-											<a href="#" class="menu-footer__link">
+											<a href="#" class="menu-footer__link" data-fls-scrollto=".algorithm" data-fls-scrollto-header="">
 												<span class="menu-footer__text">Як працюємо</span>
 												<span class="menu-footer__text menu-footer__text--hidden">Як працюємо</span>
 											</a>
 										</li>
 										<li class="menu-footer__item">
-											<a href="#" class="menu-footer__link">
+											<a href="#" class="menu-footer__link" data-fls-scrollto=".advantages" data-fls-scrollto-header="">
 												<span class="menu-footer__text">переваги</span>
 												<span class="menu-footer__text menu-footer__text--hidden">переваги</span>
 											</a>
 										</li>
 										<li class="menu-footer__item">
-											<a href="#" class="menu-footer__link">
+											<a href="#" class="menu-footer__link" data-fls-scrollto=".values">
 												<span class="menu-footer__text">цінності</span>
 												<span class="menu-footer__text menu-footer__text--hidden">цінності</span>
 											</a>
@@ -786,7 +809,7 @@
 			</div>
 		</div>
 		<div data-fls-popup="popup-form" aria-hidden="true" class="popup-form">
-			<div data-fls-popup-wrapper="" class="popup__wrapper">
+			<div data-fls-popup-wrapper="" class="popup__wrapper popup-form__wrapper">
 				<div data-fls-popup-body="" class="popup-form__body">
 					<button data-fls-popup-close="" type="button" class="popup__close">
 						<img src="./assets/img/vector/close.svg" alt="Image">
@@ -803,8 +826,10 @@
 							</span>
 						</h2>
 						<form data-fls-form="dev" data-fls-form-popup="popup-success" action="" method="POST">
-							<input type="text" required name="form[email]" data-error="Помилка" placeholder="Ім'я" class="contact__input input">
-							<input type="text" required name="form[tel]" data-error="Помилка" placeholder="Телефон" class="contact__input input">
+							<div class="popup-form__inputs">
+								<input type="text" required name="form[email]" data-error="Помилка" placeholder="Ім'я" class="contact__input input">
+								<input type="text" required name="form[tel]" data-error="Помилка" placeholder="Телефон" class="contact__input input">
+							</div>
 							<select name="form[service]" data-fls-select="" data-fls-select-modif="form" class="contact__select">
 								<option value="" disabled selected>Яка послуга вас цікавить?</option>
 								<option value="1" class="--icon-contact_01">Для бізнесу</option>
@@ -816,12 +841,14 @@
 								</option>
 							</select>
 							<textarea data-fls-input="" autocomplete="off" name="form[]" placeholder="Коментар" data-error="Помилка" class="popup-form__message contact__message input"></textarea>
-							<button type="submit" class="contact__button button">Надіслати заявку</button>
+							<button type="submit" class="contact__button popup-form__button button">
+								<span>Надіслати заявку</span>
+							</button>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js?v=1764228980450"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js?v=1764314432933"></script>
 	</body>
 </html>

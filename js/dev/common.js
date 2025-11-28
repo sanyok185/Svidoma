@@ -119,6 +119,12 @@ let bodyLock = (delay = 500) => {
     }, delay);
   }
 };
+function getDigFormat(item, sepp = " ") {
+  return item.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, `$1${sepp}`);
+}
+function uniqArray(array) {
+  return array.filter((item, index, self) => self.indexOf(item) === index);
+}
 function dataMediaQueries(array, dataSetValue) {
   const media = Array.from(array).filter((item) => item.dataset[dataSetValue]).map((item) => {
     const [value, type = "max"] = item.dataset[dataSetValue].split(",");
@@ -177,6 +183,8 @@ export {
   getHash as g,
   bodyLockStatus as h,
   bodyLockToggle as i,
-  gotoBlock as j,
-  slideDown as s
+  getDigFormat as j,
+  gotoBlock as k,
+  slideDown as s,
+  uniqArray as u
 };
