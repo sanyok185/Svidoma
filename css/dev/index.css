@@ -1591,6 +1591,13 @@ textarea.input {
 }
 
 /* Прогресбар */
+.fls-preloader__logo {
+  width: 25vw;
+}
+.fls-preloader__logo img {
+  width: 100%;
+}
+
 /* Лінія прогресбару */
 .fls-preloader__line span {
   display: inline-block;
