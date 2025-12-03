@@ -1585,6 +1585,7 @@ textarea.input {
 
 /* Блок з лічильником */
 .fls-preloader__counter {
+  font-style: italic;
   position: fixed;
   bottom: 1.5625rem;
   right: 1.625rem;
@@ -2231,6 +2232,213 @@ textarea.input {
   max-width: 17.6875rem;
 }
 
+.team {
+  /* .team__body */
+}
+.team__body {
+  position: relative;
+}
+.team {
+  /* .team__thumbs */
+}
+.team__thumbs {
+  z-index: 100;
+}
+.team__thumbs--left {
+  left: 0;
+}
+.team__thumbs--right {
+  right: 0;
+}
+.team__thumbs {
+  display: flex;
+  gap: 0.75rem;
+}
+.team {
+  /* .team__left */
+}
+.team__right {
+  right: 0;
+}
+.team {
+  /* .team__left */
+}
+.team__left {
+  left: 0;
+}
+.team__left, .team__right {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+.team {
+  /* .team__slider */
+}
+.team {
+  /* .team__wrapper */
+}
+.team {
+  /* .team__slide */
+}
+.team__slide-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f5f2ef;
+}
+.team {
+  /* .team__slide */
+}
+.team__image {
+  width: 36.875rem;
+}
+.team__image {
+  aspect-ratio: 590/690;
+  border-radius: 1.125rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+.team__image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+.team {
+  /* .team__button */
+}
+.team__button {
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+  top: 70%;
+}
+.team__button {
+  width: 3.4375rem;
+}
+.team__button {
+  aspect-ratio: 1/1;
+  background-color: #261f12;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f5f2ef;
+}
+.team__button--prev {
+  left: 0;
+}
+.team__button--next {
+  right: 0;
+  transform: rotate(180deg);
+}
+.team {
+  /* .team__content */
+}
+.team {
+  /* .team__name */
+}
+.team__name {
+  font-weight: 500;
+}
+.team__name {
+  line-height: 1.15;
+  text-align: center;
+}
+.team {
+  /* .team__text */
+}
+.team__text {
+  line-height: 1.15;
+  text-align: center;
+}
+.team {
+  /* .team__big-name */
+}
+.team__big-name {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  transform: translate(-50%, 0);
+  left: 50%;
+  font-family: "Playfair Display";
+  text-align: center;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.team__big-name {
+  white-space: nowrap;
+  line-height: 1.15;
+  color: #e7e1da;
+  z-index: 1;
+}
+
+.thumbs {
+  /* .thumbs__slider */
+}
+.thumbs__slider {
+  aspect-ratio: 137/160;
+  /* .thumbs__slider--left */
+}
+.thumbs__slider {
+  /* .thumbs__slider--right */
+}
+.thumbs__slider {
+  /* .thumbs__slider--leftest */
+}
+.thumbs__slider--leftest {
+  opacity: 0.5;
+}
+.thumbs__slider {
+  /* .thumbs__slider--leftest */
+}
+.thumbs__slider--rightest {
+  opacity: 0.5;
+}
+.thumbs {
+  /* .thumbs__wrapper */
+}
+.thumbs {
+  /* .thumbs__slide */
+}
+.thumbs__slide {
+  position: relative;
+  z-index: 20;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.thumbs__slide--plug {
+  pointer-events: none;
+  background-color: #f5f2ef;
+  border-radius: 0;
+  border: 0.1875rem solid #F5F2EF;
+  width: 8.6875rem;
+  height: 10.125rem;
+}
+.thumbs__slide {
+  position: relative;
+}
+.thumbs__slide img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.swiper-button-disabled {
+  opacity: 0.5;
+}
+
 .reviews {
   /* .reviews__container */
 }
@@ -2794,6 +3002,14 @@ body::after {
     background-size: auto 137%;
   }
 }
+@media (max-width: 81.25em){
+  .thumbs__slider--leftest {
+    display: none;
+  }
+  .thumbs__slider--rightest {
+    display: none;
+  }
+}
 @media (width <= 80.625em){
   .algorithm__items {
     grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
@@ -3021,6 +3237,42 @@ body::after {
   .item-benefits__text {
     font-size: 0.875rem;
   }
+  .team__thumbs {
+    gap: 0.5rem;
+  }
+  .team__left, .team__right {
+    top: 23.875rem;
+  }
+  .team__left, .team__right {
+    gap: 1rem;
+  }
+  .team__image {
+    width: 26.75rem;
+  }
+  .team__button::before {
+    font-size: 0.6875rem;
+  }
+  .team__button {
+    width: 2.25rem;
+  }
+  .team__content {
+    max-width: 26.75rem;
+  }
+  .team__name {
+    font-size: 1.5rem;
+  }
+  .team__name {
+    margin-bottom: 1rem;
+  }
+  .team__text {
+    font-size: 0.875rem;
+  }
+  .team__big-name {
+    font-size: 5.25rem;
+  }
+  .thumbs__slider {
+    width: 6.3125rem;
+  }
   .reviews__body {
     gap: 1rem;
   }
@@ -3186,6 +3438,19 @@ body::after {
   }
   .about-us__items {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 56.25em){
+  .team__big-name {
+    display: none;
+  }
+}
+@media (width <= 48em){
+  .team__left, .team__right {
+    top: 18.4375rem;
+  }
+  .team__big-name {
+    font-size: 3.75rem;
   }
 }
 @media (width <= 47.99875em){
@@ -3366,6 +3631,15 @@ body::after {
   .benefits__items {
     grid-template-columns: 1fr;
   }
+  .team__left, .team__right {
+    top: 35%;
+  }
+  .thumbs__slider--right {
+    display: none;
+  }
+  .thumbs__slider--left {
+    display: none;
+  }
   .advantages__body {
     background: linear-gradient(rgba(38, 31, 18, 0.6), rgba(38, 31, 18, 0.6)), url("../assets/img/benefits_bg.webp") bottom/cover no-repeat;
   }
@@ -3486,6 +3760,9 @@ body::after {
   .benefits__title span {
     min-width: 9.25rem;
   }
+  .team__left, .team__right {
+    top: 30%;
+  }
   .advantages__title {
     white-space: wrap;
   }
@@ -3575,6 +3852,12 @@ body::after {
   .item-benefits__text {
     font-size: 0.875rem;
   }
+  .team__image {
+    width: 14.5rem;
+  }
+  .team__name {
+    margin-top: 1.875rem;
+  }
   .advantages__body {
     padding-top: 3.75rem;
   }
@@ -3619,6 +3902,14 @@ body::after {
   }
   .popup-form__message {
     min-height: 12.5rem;
+  }
+}
+@media (width <= 21.875em){
+  .team__left, .team__right {
+    display: none;
+  }
+  .team__button {
+    display: none;
   }
 }
 @media (width <= 20em){
@@ -3752,6 +4043,12 @@ body::after {
   }
   .item-benefits {
     min-height: clamp( 16.5rem , 15.00903614458125rem  +  6.6265060241vw , 19.25rem );
+  }
+  .team__image {
+    width: clamp( 14.5rem , 7.8584337349375rem  +  29.5180722892vw , 26.75rem );
+  }
+  .team__name {
+    margin-top: clamp( 1.875rem , 1.5361445783125rem  +  1.5060240964vw , 2.5rem );
   }
   .advantages__body {
     padding-top: clamp( 3.75rem , 3.072289156625rem  +  3.0120481928vw , 5rem );
@@ -3968,6 +4265,14 @@ body::after {
     font-size: clamp( 1.125rem , 0.7941014265375rem  +  1.4706603265vw , 1.5rem );
   }
 }
+@media (width > 48em) and (width <= 64em){
+  .team__left, .team__right {
+    top: clamp( 18.4375rem , 2.125rem  +  33.984375vw , 23.875rem );
+  }
+  .team__big-name {
+    font-size: clamp( 3.75rem , -0.75rem  +  9.375vw , 5.25rem );
+  }
+}
 @media (width > 56.25em) and (width > 64em) and (width <= 120em){
   .hero__title {
     max-width: clamp( 32.0625rem , -6.79464285714375rem  +  60.7142857143vw , 66.0625rem );
@@ -4176,6 +4481,42 @@ body::after {
   .item-benefits__text {
     font-size: clamp( 0.875rem , 0.44642857143125rem  +  0.6696428571vw , 1.25rem );
   }
+  .team__thumbs {
+    gap: clamp( 0.5rem , 0.2142857142875rem  +  0.4464285714vw , 0.75rem );
+  }
+  .team__left, .team__right {
+    top: clamp( 23.875rem , 13.30357142856875rem  +  16.5178571429vw , 33.125rem );
+  }
+  .team__left, .team__right {
+    gap: clamp( 1rem , -0.14285714285625rem  +  1.7857142857vw , 2rem );
+  }
+  .team__image {
+    width: clamp( 26.75rem , 15.17857142856875rem  +  18.0803571429vw , 36.875rem );
+  }
+  .team__button::before {
+    font-size: clamp( 0.6875rem , 0.33035714285625rem  +  0.5580357143vw , 1rem );
+  }
+  .team__button {
+    width: clamp( 2.25rem , 0.89285714285625rem  +  2.1205357143vw , 3.4375rem );
+  }
+  .team__content {
+    max-width: clamp( 26.75rem , 21.0357142857125rem  +  8.9285714286vw , 31.75rem );
+  }
+  .team__name {
+    font-size: clamp( 1.5rem , 0.92857142856875rem  +  0.8928571429vw , 2rem );
+  }
+  .team__name {
+    margin-bottom: clamp( 1rem , 0.42857142856875rem  +  0.8928571429vw , 1.5rem );
+  }
+  .team__text {
+    font-size: clamp( 0.875rem , 0.44642857143125rem  +  0.6696428571vw , 1.25rem );
+  }
+  .team__big-name {
+    font-size: clamp( 5.25rem , 0.17857142856875rem  +  7.9241071429vw , 9.6875rem );
+  }
+  .thumbs__slider {
+    width: clamp( 6.3125rem , 3.74107142856875rem  +  4.0178571429vw , 8.5625rem );
+  }
   .reviews__body {
     gap: clamp( 1rem , -0.07142857143125rem  +  1.6741071429vw , 1.9375rem );
   }
@@ -4294,6 +4635,9 @@ body::after {
   }
   .benefits__body::after {
     height: 17.25rem;
+  }
+  .team__name {
+    margin-top: 2.5rem;
   }
   .advantages__body::after {
     height: 17.25rem;
@@ -4508,6 +4852,42 @@ body::after {
   }
   .item-benefits__text {
     font-size: 1.25rem;
+  }
+  .team__thumbs {
+    gap: 0.75rem;
+  }
+  .team__left, .team__right {
+    top: 33.125rem;
+  }
+  .team__left, .team__right {
+    gap: 2rem;
+  }
+  .team__image {
+    width: 36.875rem;
+  }
+  .team__button::before {
+    font-size: 1rem;
+  }
+  .team__button {
+    width: 3.4375rem;
+  }
+  .team__content {
+    max-width: 31.75rem;
+  }
+  .team__name {
+    font-size: 2rem;
+  }
+  .team__name {
+    margin-bottom: 1.5rem;
+  }
+  .team__text {
+    font-size: 1.25rem;
+  }
+  .team__big-name {
+    font-size: 9.6875rem;
+  }
+  .thumbs__slider {
+    width: 8.5625rem;
   }
   .reviews__body {
     gap: 1.9375rem;
